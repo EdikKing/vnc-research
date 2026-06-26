@@ -7,6 +7,46 @@
 
 set -e
 
+# ---------- 0. 环境自检 ----------
+echo "[0/4] 环境自检 ..."
+missing=()
+
+# 必须有的命令
+for cmd in Xvfb x11vnc websockify python3; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        missing+=("$cmd")
+    fi
+done
+
+# chromium:不同系统路径不一样
+if ! command -v chromium >/dev/null 2>&1 \
+   && ! command -v chromium-browser >/dev/null 2>&1 \
+   && [ ! -x /usr/bin/chromium ] \
+   && [ ! -x /snap/bin/chromium ]; then
+    missing+=("chromium")
+fi
+
+# python3 还要看 playwright 是否装了
+if command -v python3 >/dev/null 2>&1; then
+    if ! python3 -c "import playwright" 2>/dev/null; then
+        missing+=("python3-playwright (pip install playwright && playwright install chromium)")
+    fi
+fi
+
+if [ ${#missing[@]} -gt 0 ]; then
+    echo ""
+    echo "❌ 环境缺以下依赖,无法启动:"
+    printf '   - %s\n' "${missing[@]}"
+    echo ""
+    echo "安装命令(以 Debian/Ubuntu 为例):"
+    echo "  sudo apt update && sudo apt install -y xvfb x11vnc websockify chromium python3-pip"
+    echo "  pip install playwright && playwright install chromium"
+    echo ""
+    exit 1
+fi
+
+echo "    环境自检通过"
+
 # ---------- 配置 ----------
 XVFB_DISPLAY=:99
 XVFB_RESOLUTION="1280x800x24"
