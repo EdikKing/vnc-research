@@ -11,7 +11,7 @@
 
 完整示例见 [`xiaohongshu-search.md`](xiaohongshu-search.md)。
 
-**耗时**: ~45 秒,0 Edik 介入。
+**耗时**: ~45 秒,0 操作员介入。
 
 ---
 
@@ -118,7 +118,7 @@ with open(f"/root/project/docs/{author}/{date}_{title}.json", "w") as f:
 **任务**: 在 VNC 手动登录 LinkedIn → agent 自动给指定公司发"打招呼"消息。
 
 ```python
-# Step 1:Edik 已经在 VNC 浏览器登录 LinkedIn(手动操作)
+# Step 1:操作员已经在 VNC 浏览器登录 LinkedIn(手动操作)
 # Step 2:agent 直接用登录态
 
 page.goto("https://www.linkedin.com/feed/")
@@ -253,7 +253,7 @@ for user in following_a:
 **任务**: 看自己的微信公众号后台数据(关注增长/阅读量)。
 
 ```python
-# Edik 已在 VNC 登录公众号后台
+# 操作员已在 VNC 登录公众号后台
 page.goto("https://mp.weixin.qq.com/cgi-bin/home")
 page.wait_for_timeout(3000)
 
@@ -383,7 +383,7 @@ for call in api_calls:
 
 ## 场景 13:表单自动化(批量报名/填表)
 
-**任务**: 帮 Edik 在某个网站批量报名会议(填同一份报名表 50 次,不同邮箱)。
+**任务**: 帮操作员在某个网站批量报名会议(填同一份报名表 50 次,不同邮箱)。
 
 ```python
 emails = ["user1@example.com", "user2@example.com", ...]
@@ -405,13 +405,13 @@ for email in emails:
         print(f"✗ {email} 失败")
 ```
 
-⚠️ **合法使用** — 只用于 Edik 自己/团队同事的报名,不要用于代报名/灰产。
+⚠️ **合法使用** — 只用于操作员自己/团队同事的报名,不要用于代报名/灰产。
 
 ---
 
 ## 场景 14:跨账号管理(团队用)
 
-**任务**: 同时管理 Edik 个人号 + 公司号(2 个浏览器 profile)。
+**任务**: 同时管理操作员个人号 + 公司号(2 个浏览器 profile)。
 
 需要不同端口(本项目当前不支持,**多用户扩展见 `docs/05-安全考量.md`**):
 
@@ -442,8 +442,8 @@ page.click("text=使用默认地址")
 page.click("text=支付宝")
 page.wait_for_timeout(1000)
 
-# ⚠️ 支付环节:让 Edik 在 VNC 扫码/输密码
-print("⚠️ 需要 Edik 在 VNC 完成支付")
+# ⚠️ 支付环节:让操作员在 VNC 扫码/输密码
+print("⚠️ 需要操作员在 VNC 完成支付")
 input("完成后按 Enter...")
 
 # 验证订单创建
@@ -452,7 +452,7 @@ if "订单创建成功" in page.content():
     print("✓ 订单创建成功")
 ```
 
-**关键原则**: **任何涉及资金/隐私的操作,必须 Edik 在 VNC 手动确认**,不要自动化支付密码。
+**关键原则**: **任何涉及资金/隐私的操作,必须操作员在 VNC 手动确认**,不要自动化支付密码。
 
 ---
 
@@ -462,7 +462,7 @@ if "订单创建成功" in page.content():
 - 公开数据抓取(评论、商品、文章)
 - 跨平台聚合
 - 个人账号内操作(看自己的数据、改自己的设置)
-- 内部 SaaS 自动化(用 Edik 自己的账号)
+- 内部 SaaS 自动化(用操作员自己的账号)
 - 价格/库存监控
 - 内容发布(自己账号,不要 spam)
 - 表单自动化(合法场景)
@@ -475,4 +475,4 @@ if "订单创建成功" in page.content():
 - **灰产/黑产**(违法)
 - **多账号养号**(平台规则禁止)
 
-**核心原则**: 自动化可以**减少重复劳动**,但**不能取代关键决策**。涉及金钱/隐私/合规的操作,**始终让 Edik 在 VNC 手动确认**。
+**核心原则**: 自动化可以**减少重复劳动**,但**不能取代关键决策**。涉及金钱/隐私/合规的操作,**始终让操作员在 VNC 手动确认**。

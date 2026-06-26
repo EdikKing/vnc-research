@@ -66,9 +66,9 @@ def main():
             print(f"  验证码: {'⚠️ 检测到' if has_captcha else '✓ 无'}")
 
             if has_login_wall:
-                print("\n💡 Edik 需要在 VNC 浏览器手动登录,登录完说 '搞定了'")
+                print("\n💡 操作员需要在 VNC 浏览器手动登录,登录完说 '搞定了'")
             elif has_captcha:
-                print("\n💡 Edik 需要在 VNC 浏览器滑过滑块,完事说 '搞定了'")
+                print("\n💡 操作员需要在 VNC 浏览器滑过滑块,完事说 '搞定了'")
             else:
                 print("\n✓ 一切正常,可以继续抓数据")
 

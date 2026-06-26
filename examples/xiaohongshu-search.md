@@ -11,7 +11,7 @@
 **期望**:
 - Top 20 笔记(按热度排序)
 - 每条:标题/作者/日期/赞藏评/正文首段
-- 给 Edik 看 Markdown 报告
+- 给操作员看 Markdown 报告
 
 ---
 
@@ -116,7 +116,7 @@ def parse_int(s):
 
 results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 
-# 输出 Markdown 报告(给 Edik 看)
+# 输出 Markdown 报告(给操作员看)
 ```
 
 ---
@@ -167,7 +167,7 @@ results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 | 指标 | 值 |
 |------|-----|
 | 总耗时 | ~45 秒 |
-| Edik 介入次数 | 0 |
+| 操作员介入次数 | 0 |
 | 抓取量 | 22 条搜索结果 → 20 条详情(2 条 URL 去重失败) |
 | chromium 重启次数 | 0 |
 | Xvfb 崩溃次数 | 0 |
@@ -179,7 +179,7 @@ results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 1. **小红书 `/explore/` 链接 404**,必须用 `/search_result/<hash>?xsec_token=...`
 2. **点赞数格式多样**(87 / 1.2万 / 152),需要统一 `parse_int()`
 3. **JavaScript 字符串含 `\\`** 用 raw string `r''' '''` 或 `subprocess.run(['python3', '-c', script])`
-4. **chromium profile 跨 session 复用登录态** — Edik 在 VNC 登录一次,agent 后续抓不用再登录
+4. **chromium profile 跨 session 复用登录态** — 操作员在 VNC 登录一次,agent 后续抓不用再登录
 
 ---
 
@@ -192,4 +192,4 @@ results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 3. 适配其他平台时,参考 `skills/SKILL.md` 的"平台特定"章节
 4. 平台特定踩坑见 `docs/04-踩坑记录.md`
 
-**0 Edik 介入 / 0 credit / 完全内网** — 这就是 vnc-research 的价值。
+**0 操作员介入 / 0 credit / 完全内网** — 这就是 vnc-research 的价值。

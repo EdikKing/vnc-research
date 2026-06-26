@@ -3,7 +3,7 @@ name: vnc-research
 description: >
   通用网页交互框架: 通过 VNC 共享浏览器 + Playwright CDP, 完成任何需要
   浏览器交互的任务 — 调研抓取 / 内容获取 / 自动化操作 / 监控 / 跨平台
-  聚合。Edik 仅在登录墙 / 验证码时介入。比 BrowserAct 更优: 永久免费、
+  聚合。操作员仅在登录墙 / 验证码时介入。比 BrowserAct 更优: 永久免费、
   登录态持久、完全内网、可处理任意网页场景。
 ---
 
@@ -18,11 +18,11 @@ description: >
 
 > **vnc-research = 通用网页交互框架**,不只是调研。
 
-适用所有"需要通过浏览器访问网页"的任务。Edik 不需要为每种任务装不同工具。
+适用所有"需要通过浏览器访问网页"的任务。用户不需要为每种任务装不同工具。
 
 ## When to Use
 
-| Edik 说 | 任务类型 | 用 vnc-research |
+| 操作员说 | 任务类型 | 用 vnc-research |
 |---------|---------|----------------|
 | "调研 X" / "搜 X" / "抓 X" | 调研抓取 | ✅ |
 | "抓这篇文章" / "下载这个" / "导出 X 的数据" | 内容获取 | ✅ |
@@ -43,37 +43,37 @@ description: >
 ## When NOT to Use
 
 - 任务能直接靠公开 API 完成(用对应 skill: arxiv/blogwatcher/etc)
-- Edik 明确说"用 curl" / "用 BrowserAct" / "用 browser 工具" → 听 Edik 的
+- 明确指定"用 curl" / "用 BrowserAct" / "用 browser 工具" → 听用户的
 - 静态文档类(markdown/PDF 直接读文件就好)
 - 任务能在命令行完成(grep/awk/sed/jq)
 - 已有专门 skill 的领域(用专门 skill)
 
 ---
 
-## 🔴 Edik 介入协议(最高优先级)
+## 🔴 操作员介入协议(最高优先级)
 
-> **核心原则**: vnc-research 是 agent 自动化 + Edik 兜底协作的框架。
-> 默认 agent 自动操作;**遇到 agent 处理不了的情况,立刻暂停 + 通知 Edik,列出 VNC 地址方便他直接去处理**。
+> **核心原则**: vnc-research 是 agent 自动化 + 操作员兜底协作的框架。
+> 默认 agent 自动操作;**遇到 agent 处理不了的情况,立刻暂停 + 通知操作员,列出 VNC 地址方便直接去处理**。
 
 ### 什么情况必须暂停 + 通知
 
 | 情况 | 检测方法 | agent 该做什么 |
 |------|---------|---------------|
-| **登录墙** | `page.content()` 含 "请先登录"/"登录后查看" | 暂停,通知 Edik 登录 |
-| **滑块验证** | `page.content()` 含 `rmc.bytedance.com/verifycenter` | 暂停,通知 Edik 滑滑块 |
-| **短信/邮箱验证码** | `page.content()` 含 "请输入验证码"/"短信验证" | 暂停,通知 Edik 收码 |
-| **二维码扫码** | `page.content()` 含 "扫码登录"/"微信扫码"/"打开 App 扫码" | 暂停,通知 Edik 扫码 |
-| **人脸/实名认证** | `page.content()` 含 "实名认证"/"人脸识别" | 暂停,通知 Edik 做人脸 |
-| **支付/转账确认** | `page.content()` 含 "支付"/"输入支付密码" | 暂停,通知 Edik 完成支付 |
-| **风控被封** | `page.content()` 含 "账号异常"/"已被封禁" | 暂停,通知 Edik 决定下一步 |
-| **页面崩溃/打不开** | `page.goto` 抛异常或 timeout | 暂停,通知 Edik 确认 VNC |
+| **登录墙** | `page.content()` 含 "请先登录"/"登录后查看" | 暂停,通知操作员登录 |
+| **滑块验证** | `page.content()` 含 `rmc.bytedance.com/verifycenter` | 暂停,通知操作员滑滑块 |
+| **短信/邮箱验证码** | `page.content()` 含 "请输入验证码"/"短信验证" | 暂停,通知操作员收码 |
+| **二维码扫码** | `page.content()` 含 "扫码登录"/"微信扫码"/"打开 App 扫码" | 暂停,通知操作员扫码 |
+| **人脸/实名认证** | `page.content()` 含 "实名认证"/"人脸识别" | 暂停,通知操作员做人脸 |
+| **支付/转账确认** | `page.content()` 含 "支付"/"输入支付密码" | 暂停,通知操作员完成支付 |
+| **风控被封** | `page.content()` 含 "账号异常"/"已被封禁" | 暂停,通知操作员决定下一步 |
+| **页面崩溃/打不开** | `page.goto` 抛异常或 timeout | 暂停,通知操作员确认 VNC |
 
 ### ⚠️ 通知格式(标准模板)
 
 暂停时,**agent 必须输出**这个格式(包含 VNC 链接 + 具体任务 + 验证信号):
 
 ```
-🛑 暂停: 需要 Edik 介入
+🛑 暂停: 需要操作员介入
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 任务: <当前正在做什么,例如 "登录小红书">
 原因: <具体卡在哪,例如 "搜索结果页显示 '登录后查看'">
@@ -96,7 +96,7 @@ agent 接下来会:
 
 ```python
 def check_block(page, current_task=""):
-    """检测是否需要 Edik 介入。返回 (need_intervene, reason, vnc_url)"""
+    """检测是否需要操作员介入。返回 (need_intervene, reason, vnc_url)"""
     content = page.content()
     
     # 登录墙
@@ -142,9 +142,9 @@ Agent 暂停所有 playwright 操作(不再调 page.goto/click/...)
   ↓
 Agent 输出标准暂停通知(含 VNC URL)
   ↓
-[等待 Edik 操作]
+[等待操作员操作]
   ↓
-Edik: "搞定了"  ← 关键信号
+操作员: "搞定了"  ← 关键信号
   ↓
 Agent: page.reload() + page.wait_for_timeout(2000)
   ↓
@@ -155,32 +155,32 @@ Agent 继续执行原任务
 
 **DO**:
 - ✅ 检测到需要介入时,**立刻暂停**,不要继续尝试各种自动化方案(浪费时间)
-- ✅ 暂停通知里**必须包含 VNC URL**(Edik 不能记住所有内网地址)
+- ✅ 暂停通知里**必须包含 VNC URL**(操作员不能记住所有内网地址)
 - ✅ 暂停通知里**说明具体操作**(不要只说"需要登录",要说"登录小红书账号,扫码/手机号")
-- ✅ Edik 说"搞定了"之后,**先 reload 再继续**(cookie 可能没生效)
-- ✅ 同一任务最多暂停 1 次,Edik 操作完就该跑通
+- ✅ 操作员说"搞定了"之后,**先 reload 再继续**(cookie 可能没生效)
+- ✅ 同一任务最多暂停 1 次,操作员操作完就该跑通
 
 **DON'T**:
-- ❌ 默认每次都让 Edik 介入(他已经登录过的平台 cookie 都在,直接用)
+- ❌ 默认每次都让操作员介入(已登录过的平台 cookie 都在,直接用)
 - ❌ 检测到登录墙还尝试用 stealth / proxy / 换 UA 解决(这套架构不解决风控)
 - ❌ 在 VNC 看不到的时候输出暂停通知(必须同时显示 VNC URL)
 - ❌ 用 `input("按 Enter 继续")` 阻塞(不是所有 agent 都能响应 stdin)
-- ❌ 不带 VNC URL 就说 "Edik 请处理" — Edik 看不到就没法处理
+- ❌ 不带 VNC URL 就说 "操作员请处理" — 操作员看不到就没法处理
 - ❌ 跳过暂停继续操作(可能触发账号封禁)
-- ❌ 替 Edik 输入密码或点 OAuth(账号安全红线)
+- ❌ 替操作员输入密码或点 OAuth(账号安全红线)
 
 ### 复盘机制
 
-每次 Edik 介入,agent 应记录:
+每次操作员介入,agent 应记录:
 - 哪个平台
 - 卡在什么步骤
-- Edik 做了什么操作
+- 操作员做了什么操作
 - 后续 agent 怎么继续
 
 写到 `/tmp/vnc-research-interventions.log`:
 ```
-2026-06-26 23:50 | xiaohongshu | 登录墙 | Edik 扫码登录 | agent page.reload + 继续
-2026-06-26 23:55 | douyin | 滑块 | Edik 滑过 | agent page.reload + 继续
+2026-06-26 23:50 | xiaohongshu | 登录墙 | 操作员扫码登录 | agent page.reload + 继续
+2026-06-26 23:55 | douyin | 滑块 | 操作员滑过 | agent page.reload + 继续
 ```
 
 ---
@@ -193,11 +193,11 @@ Agent 继续执行原任务
    ```bash
    curl http://127.0.0.1:9222/json/version
    ```
-   如果不响应,告诉 Edik "VNC 浏览器没在跑,要 start-all"
+   如果不响应,告诉操作员 "VNC 浏览器没在跑,要 start-all"
 
 2. **加载本 skill**:`skill_view('vnc-research')` 读完整个 SKILL.md
 
-3. **理解 Edik 的真实意图** — 不明确就 clarify
+3. **理解操作员的真实意图** — 不明确就 clarify
 
 ---
 
@@ -208,9 +208,9 @@ Agent 继续执行原任务
                                               ↓ profile shared
                                        [登录态/cookie 永久]
                                               ↓
-                                       [Edik 在 VNC 浏览器 :6080 看]
+                                       [操作员在 VNC 浏览器 :6080 看]
                                               ↓
-                              [需要时 Edik 手动操作 + 写 cookie]
+                              [需要时操作员手动操作 + 写 cookie]
 ```
 
 ---
@@ -232,7 +232,7 @@ navigate 搜索页 → 抓链接列表 → 循环 navigate 详情 → 抓详情 
 ### 模式 C:登录后操作(写)
 
 ```
-navigate 登录页 → Edik 手动登录(只一次)
+navigate 登录页 → 操作员手动登录(只一次)
   ↓ 后续 session cookie 自动复用
 navigate 目标页 → click/input/select → submit → 验证结果
 ```
@@ -252,7 +252,7 @@ navigate 目标页 → click/input/select → submit → 验证结果
 while True:
   navigate 监控目标
   evaluate(抓关键指标)
-  if 指标 != 上次: 通知 Edik
+  if 指标 != 上次: 通知操作员
   sleep(interval)
 ```
 
@@ -263,10 +263,10 @@ navigate 目标 → 执行操作(click/input/submit)
   ↓
 evaluate(检查结果是否生效)
   ↓
-if 失败: 重试 / 报错给 Edik
+if 失败: 重试 / 报错给操作员
 ```
 
-**所有模式的核心都是 `playwright + VNC chromium + Edik 介入协议`**。
+**所有模式的核心都是 `playwright + VNC chromium + 操作员介入协议`**。
 
 ---
 
@@ -279,7 +279,7 @@ from playwright.sync_api import sync_playwright
 
 with sync_playwright() as p:
     browser = p.chromium.connect_over_cdp("http://127.0.0.1:9222")
-    # 用现有 page(避免开新标签页打断 Edik 的 VNC 视图)
+    # 用现有 page(避免开新标签页打断操作员的 VNC 视图)
     if browser.contexts[0].pages:
         page = browser.contexts[0].pages[0]
     else:
@@ -300,15 +300,15 @@ page.wait_for_timeout(3000)  # 等异步加载
 content = page.content()
 
 if "登录后查看" in content or "请先登录" in content:
-    # 登录墙 - 需要 Edik 介入
-    print("⚠️ 需要登录。Edik, 请在 VNC 浏览器手动登录,登录完说 '搞定了'")
-    input("按 Enter 继续...")  # 阻塞等 Edik
+    # 登录墙 - 需要操作员介入
+    print("⚠️ 需要登录。操作员, 请在 VNC 浏览器手动登录,登录完说 '搞定了'")
+    input("按 Enter 继续...")  # 阻塞等操作员
     page.reload()
     page.wait_for_timeout(3000)
 
 if "verify" in content.lower() or "rmc.bytedance.com" in content:
     # 验证码/滑块
-    print("⚠️ 触发滑块验证。Edik, 请在 VNC 滑过,完事说 '搞定了'")
+    print("⚠️ 触发滑块验证。操作员, 请在 VNC 滑过,完事说 '搞定了'")
     input("按 Enter 继续...")
     page.reload()
     page.wait_for_timeout(3000)
@@ -320,7 +320,7 @@ if "verify" in content.lower() or "rmc.bytedance.com" in content:
 
 ### Step 5:输出报告
 
-按 `docs/03-使用指南.md` 的报告模板,数据落 `/tmp/`,Markdown 输出给 Edik。
+按 `docs/03-使用指南.md` 的报告模板,数据落 `/tmp/`,Markdown 输出给操作员。
 
 ---
 
@@ -371,12 +371,12 @@ https://www.douyin.com/search/<urlencoded>
 
 **登录墙**:
 - 抖音搜索页强制登录
-- Edik 在 VNC 登录(扫码/手机号)
+- 操作员在 VNC 登录(扫码/手机号)
 - 登录态保留,agent 可直接抓
 
 **滑块**:
 - `rmc.bytedance.com/verifycenter/captcha/v2?subtype=slide`
-- Edik 在 VNC 滑过
+- 操作员在 VNC 滑过
 - 触发检测:`page.content()` 包含 "rmc.bytedance.com"
 
 **搜索结果抓取**:
@@ -457,7 +457,7 @@ page.keyboard.press("Control+Enter")  # Ctrl+Enter 提交
 ### 模板 2:登录态复用 + 自动操作
 
 ```python
-# 第一次:Edik 手动登录(cookie 写入 profile)
+# 第一次:操作员手动登录(cookie 写入 profile)
 # 后续:agent 直接复用登录态
 
 page.goto("https://weibo.com")  # 已登录
@@ -527,7 +527,7 @@ page.set_input_files("input[type='file']", "/local/path/to/file.pdf")
 ```python
 # 通用表单
 page.fill("input[name='username']", "user")
-page.fill("input[name='password']", "pass")  # 注意:密码应该从 Edik 那问,不要硬编码
+page.fill("input[name='password']", "pass")  # 注意:密码应该从操作员那问,不要硬编码
 page.select_option("select[name='role']", "admin")
 page.check("input[type='checkbox'][name='agree']")
 page.click("button[type='submit']")
@@ -697,19 +697,19 @@ for item in saved:
 
 ## "先试读再叫人" 原则
 
-> Edik 反复强调。**默认 agent 自动操作,遇到登录墙/验证码才暂停叫人**。
+> 本框架反复强调。**默认 agent 自动操作,遇到登录墙/验证码才暂停叫人**。
 
 DO:
 - ✅ 默认开始抓数据,不叫人
 - ✅ 真的遇到登录墙/验证码才暂停
-- ✅ 暂停时**明确告诉 Edik** "需要做什么" + "做完说什么"
-- ✅ Edik "搞定了" 之后**reload 再试**,不要假设 cookie 自动生效
+- ✅ 暂停时**明确告诉操作员** "需要做什么" + "做完说什么"
+- ✅ 操作员 "搞定了" 之后**reload 再试**,不要假设 cookie 自动生效
 
 DON'T:
-- ❌ 默认每次都叫人(他已经在 VNC 登录过平台)
-- ❌ 不暂停直接操作 VNC(那是他/她的浏览器,不是 agent 的)
+- ❌ 默认每次都叫人(平台 cookie 已在 VNC 里,直接用)
+- ❌ 不暂停直接操作 VNC(那是操作员的浏览器,不是 agent 的)
 - ❌ 假设登录态存在(必须 `page.content()` 先确认)
-- ❌ 替他输入密码或点 OAuth(账号安全)
+- ❌ 替操作员输入密码或点 OAuth(账号安全)
 
 ---
 
@@ -768,7 +768,7 @@ Agent: [抓 3 个平台 + 合并排序]
 1. **小红书 `/explore/` 链接 404,必须用 `/search_result/<hash>?xsec_token=...`**
 2. **chromium 启动必须显式 `DISPLAY=:99`**,否则画到 `:0` 黑屏
 3. **Xvfb 加 `-ac`** 避免 Xauthority 麻烦
-4. **抖音搜索页 = 登录墙,触发滑块时需要 Edik 介入**
+4. **抖音搜索页 = 登录墙,触发滑块时需要操作员介入**
 5. **JavaScript 字符串含 `\\`** 用 `r''' '''` raw 字符串或 `subprocess.run(['python3', '-c', script])`
 
 ---
@@ -777,7 +777,7 @@ Agent: [抓 3 个平台 + 合并排序]
 
 ```markdown
 # <Topic> 调研报告
-> 调研日期: YYYY-MM-DD | 抓取源: VNC chromium + playwright CDP | 0 Edik 介入
+> 调研日期: YYYY-MM-DD | 抓取源: VNC chromium + playwright CDP | 0 操作员介入
 
 ## Top N(按热度排序)
 
@@ -809,37 +809,36 @@ Agent: [抓 3 个平台 + 合并排序]
 - 项目主页: `/root/project/docs/vnc-research/`(shareable 给朋友)
 - 部署指南: `/root/project/docs/vnc-research/docs/02-部署指南.md`
 - 踩坑记录: `/root/project/docs/vnc-research/docs/04-踩坑记录.md`
-- 健康检查: `/root/project/docs/vnc-research/scripts/health-check.sh`(Edik 已实测可跑通)
+- 健康检查: `/root/project/docs/vnc-research/scripts/health-check.sh`(已实测可跑通)
 - 演示样例: `/root/project/docs/vnc-research/examples/xiaohongshu-search.md`
-- 演示脚本: `scripts/playwright-connect.py`(Edik 已实测可跑通)
+- 演示脚本: `scripts/playwright-connect.py`(已实测可跑通)
 - **场景应用清单**: `/root/project/docs/vnc-research/examples/use-cases.md`(15 个场景,调研/抓取/操作/监控/聚合)
-- **🟢 Edik 偏好与边界**: `~/.hermes/skills/edik-long-term-partner/SKILL.md` "Agent 拥有独立 VNC 浏览器" 章节 — 必读
 - **🟢 中文平台经验沉淀**: `~/.hermes/skills/research/chinese-web-research/SKILL.md` + `references/vnc-playwright-cdp-setup.md` — 中文平台特定踩坑
-- **🔴 误读指令的反面案例**: `~/.hermes/skills/edik-long-term-partner/SKILL.md` "URL 上下文判断" 章节 — 防止今天犯过的 3 轮误读再次发生
+- **🔴 误读指令的反面案例**: 每轮任务开头的 "用户原话 → 我的解读 → 实际意图" 三段式记录 — 防止不澄清就开干
 
 ---
 
-## 操作边界(2026-06-26 Edik 明确偏好)
+## 操作边界(2026-06-26 划定)
 
-> 哪些事 agent 干,哪些事**永远**留给 Edik。
+> 哪些事 agent 干,哪些事**永远**留给操作员。
 
 ### ✅ agent 默认自动干
 - 任何页面导航、点击、输入、抓数据
 - 跨页面、跨平台搜索 + 抓取
 - 监控价格、库存、舆情
 - 表单填写(报名、登录非敏感账号)
-- 内容发布到 Edik 自己的账号(小红书/微博/知乎草稿)
+- 内容发布到操作员自己的账号(小红书/微博/知乎草稿)
 - Web 应用自动化测试
 
-### 🔴 必须 Edik 在 VNC 手动干
-- **输入密码 / 点 OAuth 按钮** — agent 永远不替 Edik 输密码(账号安全)
+### 🔴 必须操作员在 VNC 手动干
+- **输入密码 / 点 OAuth 按钮** — agent 永远不替操作员输密码(账号安全)
 - **完成支付流程** — 涉及资金、合规风险
-- **手机/邮箱验证码** — 需要 Edik 看手机/邮箱
+- **手机/邮箱验证码** — 需要操作员看手机/邮箱
 - **首次登录新平台** — 扫码登录,建立 cookie 持久化
 
 ### ⚠️ 边界判断
 - **频率限制场景**:批量关注/评论/点赞等 → 遵守平台规则,不要触发 spam 检测(被封号)
-- **个人数据查询**:查微信/邮箱/订单 → 用 Edik 自己账号 OK,但**不导出到第三方**(数据本地落盘)
+- **个人数据查询**:查微信/邮箱/订单 → 用操作员自己账号 OK,但**不导出到第三方**(数据本地落盘)
 - **银行/支付**:不要自动化任何涉及资金的页面操作(合规风险)
 
 ---
@@ -850,7 +849,7 @@ Agent: [抓 3 个平台 + 合并排序]
 - ❌ 用 `/explore/` URL 抓小红书详情 — 404,用 `/search_result/?xsec_token=`
 - ❌ 启动 chromium 不指定 `DISPLAY=:99` — 黑屏
 - ❌ 不 `wait_for_timeout(2000-4000)` 就 evaluate — 抓不到异步内容
-- ❌ 默认每次都 Edik 介入 — 浪费,先试读再叫人
-- ❌ 替 Edik 输密码或点 OAuth — 账号安全红线
+- ❌ 默认每次都操作员介入 — 浪费,先试读再叫人
+- ❌ 替操作员输密码或点 OAuth — 账号安全红线
 - ❌ agent 操作时假设登录态存在 — 必须 `page.content()` 先确认
 - ❌ 关闭 chromium(丢失 profile/登录态)— 用 `page.goto` 而非重启
