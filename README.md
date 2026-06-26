@@ -32,6 +32,19 @@
 
 ---
 
+## 目录结构
+
+```
+vnc-research/
+├── README.md                # 你正在看
+├── LICENSE                  # MIT 协议
+├── CHANGELOG.md             # 版本历史
+├── docs/                    # 6 篇教程文档
+├── skills/SKILL.md          # 🔴 操作员介入协议(协议核心)
+├── scripts/                 # 一键启动 / 健康检查 / playwright 连接
+└── examples/                # 实战案例(小红书搜索 / use-cases)
+```
+
 ## 30 秒看懂架构
 
 ```
@@ -142,6 +155,15 @@ chmod +x *.sh
 ## 贡献
 
 发现新坑 / 有改进建议 → 提 issue 或直接改 docs/
+
+## 快速使用
+
+1. **克隆仓库**:`git clone git@git.edik.cn:edik-project/vnc-research.git && cd vnc-research`
+2. **看 5 分钟快速开始**:[docs/00-快速开始.md](docs/00-快速开始.md)
+3. **部署到服务器**:[docs/02-部署指南.md](docs/02-部署指南.md)
+4. **遇到坑了**?[docs/04-踩坑记录.md](docs/04-踩坑记录.md)
+
+完整目录见下,有问题提 issue。
 
 ---
 
