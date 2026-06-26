@@ -1,0 +1,23 @@
+# Personal research reports (not part of vnc-research framework)
+examples/daminghu-report-2026-06-27.pdf
+examples/daminghu-report-2026-06-27.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Secrets / runtime
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.sqlite
+*.db
+__pycache__/
+*.pyc
+.venv/
+venv/
