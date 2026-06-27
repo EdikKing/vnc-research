@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- 新增 `docs/06-外网访问.md`(429 行)· ngrok HTTP/TCP 隧道 + 双层鉴权(VNC 密码 + basic-auth)+ Docker 部署示例 + 安全 checklist + 故障排查
+  - 风险提示 / 准备工作 / 方案 A HTTP 主推 / 方案 B TCP 备选 / Docker run + compose / Dockerfile / 安全 checklist / 8 项故障排查 / 参考
+  - 鉴权全可选;VNC 密码默认自动生成 8 位数字(脚本已实现);ngrok basic-auth 用户名密码默认无(用户自设);ngrok 默认 free anonymous(可注册加 authtoken);默认 HTTP 隧道(也提供 TCP)
+  - 配套脚本 `scripts/start-ngrok.sh`(由 devops 同步 commit,本次未在 tech-writer 任务范围)
+
 ### Planned
 - 加 CONTRIBUTING.md(贡献指南)
 - 加 ROADMAP.md(路线图)
