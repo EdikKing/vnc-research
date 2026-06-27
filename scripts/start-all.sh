@@ -49,11 +49,15 @@ echo "    环境自检通过"
 
 # ---------- 配置 ----------
 XVFB_DISPLAY=:99
-XVFB_RESOLUTION="1280x800x24"
+# Xvfb 分辨率(env 覆盖,默认 1280x800x24)
+XVFB_RESOLUTION="${DISPLAY_RESOLUTION:-1280x800x24}"
 VNC_PORT=5900
 NOVNC_PORT=6080
 DEVTOOLS_PORT=9222
-CHROMIUM_WINDOW_SIZE="1280,800"
+# 同步联动:chromium 窗口 size 从 Xvfb 分辨率拆出来
+# 例如 "1920x1080x24" → "1920,1080"
+XVFB_W_H="${XVFB_RESOLUTION%x*}"   # "1280x800"
+CHROMIUM_WINDOW_SIZE="${XVFB_W_H/x/,}"   # "1280,800"
 CHROMIUM_USER_DATA_DIR="$HOME/.config/chromium"
 CHROMIUM_START_URL="about:blank"
 LOG_DIR="/var/log/vnc-research"

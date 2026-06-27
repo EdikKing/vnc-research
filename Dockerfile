@@ -11,10 +11,11 @@
 #     -p 6080:6080 -p 9222:9222 \
 #     vnc-research:0.2.0
 #
-# 启动容器(推荐,带 VNC 密码):
+# 启动容器(推荐,带 VNC 密码 + 自定义分辨率):
 #   docker run -d --name vnc-research \
 #     -p 6080:6080 -p 9222:9222 \
 #     -e VNC_PASSWORD=你的密码 \
+#     -e DISPLAY_RESOLUTION=1920x1080x24 \
 #     vnc-research:0.2.0
 #
 # 查看 noVNC:
@@ -77,6 +78,12 @@ RUN chown vncuser:vncuser /home/vncuser/app
 
 # ---------- 6. 切非 root ----------
 USER vncuser
+
+# ---------- 分辨率配置(可被 -e 覆盖)----------
+# 默认 1280x800x24(笔记本友好,省内存);用户可改:
+#   docker run -e DISPLAY_RESOLUTION=1920x1080x24 vnc-research
+# start-all.sh 自动同步 chromium 窗口 size(无需单独配置)
+ENV DISPLAY_RESOLUTION=1280x800x24
 
 # ---------- 7. 暴露端口 ----------
 # 6080  noVNC Web UI(浏览器访问)
