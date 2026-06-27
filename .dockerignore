@@ -1,0 +1,37 @@
+# Git / VCS
+.git/
+.gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+
+# 项目文档(不需要进镜像)
+README.md
+LICENSE
+CHANGELOG.md
+docs/
+examples/
+
+# 编辑器 / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# 日志 / 测试覆盖
+*.log
+.coverage
+htmlcov/
+
+# Docker 自身(避免递归)
+Dockerfile
+.dockerignore
