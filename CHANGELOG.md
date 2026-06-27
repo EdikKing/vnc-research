@@ -7,16 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- 新增 `docs/06-外网访问.md`(429 行)· ngrok HTTP/TCP 隧道 + 双层鉴权(VNC 密码 + basic-auth)+ Docker 部署示例 + 安全 checklist + 故障排查
-  - 风险提示 / 准备工作 / 方案 A HTTP 主推 / 方案 B TCP 备选 / Docker run + compose / Dockerfile / 安全 checklist / 8 项故障排查 / 参考
-  - 鉴权全可选;VNC 密码默认自动生成 8 位数字(脚本已实现);ngrok basic-auth 用户名密码默认无(用户自设);ngrok 默认 free anonymous(可注册加 authtoken);默认 HTTP 隧道(也提供 TCP)
-  - 配套脚本 `scripts/start-ngrok.sh`(由 devops 同步 commit,本次未在 tech-writer 任务范围)
-
 ### Planned
 - 加 CONTRIBUTING.md(贡献指南)
 - 加 ROADMAP.md(路线图)
 - 加 GitLab CI(Markdown lint / shellcheck)
+
+## [0.2.0] - 2026-06-27
+
+### Added
+- `docs/deployment-comparison.md`:三种部署方式横向对比(本机直装 / Docker / systemd),8 维度对比表 + 优缺点 + 条件分支选择建议
+- `docs/deployment-comparison.md`:新增"## 推荐"章节(明确推荐方式一本机直装)
+- `docs/06-外网访问.md`:ngrok HTTP/TCP 隧道 + 双层鉴权(VNC 密码 + basic-auth)+ Docker 配置示例 + 安全 checklist + 故障排查
+- `scripts/start-all.sh`:VNC 密码机制(默认自动生成 8 位数字,env 可覆盖,替代 `-nopw`)
+- `scripts/start-ngrok.sh`:ngrok 一键启动脚本(free anonymous 默认 + basic-auth / TCP / region 可选)
+
+### Changed
+- `README.md`:章节数描述从"6 篇教程"更新为"7 篇教程 + 1 篇部署方式对比"
+- `README.md` / `docs/01-架构详解.md`:URL 引用统一改为 GitHub(`git@github.com:EdikKing/vnc-research.git`),策略 A
+- `docs/01-架构详解.md`:架构图里 10.1.1.52 → `<你的服务器IP>` 占位符(私人内网 IP 不进开源文档)
+
+[0.2.0]: https://github.com/EdikKing/vnc-research/releases/tag/v0.2.0
 
 ## [0.1.0] - 2026-06-27
 

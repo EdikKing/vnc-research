@@ -39,7 +39,7 @@ vnc-research/
 ├── README.md                # 你正在看
 ├── LICENSE                  # MIT 协议
 ├── CHANGELOG.md             # 版本历史
-├── docs/                    # 6 篇教程文档
+├── docs/                    # 7 篇教程文档 + 1 篇部署方式对比(deployment-comparison.md)
 ├── skills/SKILL.md          # 🔴 操作员介入协议(协议核心)
 ├── scripts/                 # 一键启动 / 健康检查 / playwright 连接
 └── examples/                # 实战案例(小红书搜索 / use-cases)
@@ -89,7 +89,7 @@ vnc-research/
 │   ├── xiaohongshu-search.md  ← 端到端实测样例(调研类)
 │   └── use-cases.md           ← 15 个应用场景(调研/抓取/操作/监控/聚合)
 └── assets/
-    └── architecture-diagram.svg  ← 架构图(可选)
+    └── vnc-1920x1080-screenshot.png  ← 实测 VNC 画面截图
 ```
 
 ---
@@ -162,6 +162,7 @@ chmod +x *.sh
 2. **看 5 分钟快速开始**:[docs/00-快速开始.md](docs/00-快速开始.md)
 3. **部署到服务器**:[docs/02-部署指南.md](docs/02-部署指南.md)
 4. **遇到坑了**?[docs/04-踩坑记录.md](docs/04-踩坑记录.md)
+5. **更多场景**:[examples/use-cases.md](examples/use-cases.md)
 
 完整目录见下,有问题提 issue。
 
