@@ -77,12 +77,46 @@ echo "[2/4] 启动 x11vnc ..."
 if pgrep -f "x11vnc.*$XVFB_DISPLAY" >/dev/null; then
     echo "    x11vnc 已在运行"
 else
-    x11vnc -display $XVFB_DISPLAY -forever -shared -rfbport $VNC_PORT -nopw \
+    # ---------- VNC 密码 ----------
+    # 默认自动生成 8 位数字密码(每次启动随机,启动时日志打印)
+    # 用户可用 env 覆盖:export VNC_PASSWORD=mypass
+    # 密码生成失败时 fallback 到文件方式,不 exit
+    mkdir -p "$HOME/.vnc"
+    if [ -z "$VNC_PASSWORD" ]; then
+        if VNC_PASSWORD=$(shuf -i 10000000-99999999 -n 1 2>/dev/null) && [ -n "$VNC_PASSWORD" ]; then
+            :
+        else
+            # fallback:用日期+随机数拼一个
+            VNC_PASSWORD="$(date +%s | tail -c 8)$(shuf -i 100-999 -n 1 2>/dev/null || echo 000)"
+            echo "[!] shuf 失败,fallback 密码:$VNC_PASSWORD (8 位内数字)"
+        fi
+        echo ""
+        echo "=========================================================="
+        echo "🔐 VNC 密码(本次启动自动生成):$VNC_PASSWORD"
+        echo "   ⚠️  这是 VNC 密码,外网访问必须配 VNC 密码 + 推荐加 basic-auth"
+        echo "   用户自设密码:export VNC_PASSWORD=你的密码  再启动"
+        echo "=========================================================="
+        echo ""
+    else
+        echo "    使用环境变量 VNC_PASSWORD(自定义密码)"
+    fi
+
+    # 写密码文件:优先 x11vncpasswd 生成加密格式,fallback 明文
+    if command -v x11vncpasswd >/dev/null 2>&1; then
+        echo "$VNC_PASSWORD" | x11vncpasswd -f > "$HOME/.vnc/passwd" 2>/dev/null || \
+            { echo "$VNC_PASSWORD" > "$HOME/.vnc/passwd"; echo "[!] x11vncpasswd 失败,用明文 fallback"; }
+    else
+        echo "$VNC_PASSWORD" > "$HOME/.vnc/passwd"
+    fi
+    chmod 600 "$HOME/.vnc/passwd"
+
+    x11vnc -display $XVFB_DISPLAY -forever -shared -rfbport $VNC_PORT \
+        -rfbauth "$HOME/.vnc/passwd" \
         -o "$LOG_DIR/x11vnc.log" \
         >> "$LOG_DIR/x11vnc.out" 2>&1 &
     sleep 1
 fi
-echo "    x11vnc :$VNC_PORT OK"
+echo "    x11vnc :$VNC_PORT OK(已启用密码)"
 
 # ---------- 3. websockify + noVNC ----------
 echo "[3/4] 启动 noVNC ..."
@@ -124,4 +158,12 @@ echo ""
 echo "VNC 浏览器:  http://你的服务器IP:$NOVNC_PORT/vnc.html"
 echo "DevTools:    http://127.0.0.1:$DEVTOOLS_PORT  (仅本机)"
 echo ""
+if [ -n "$VNC_PASSWORD" ]; then
+    echo "🔐 VNC 密码: $VNC_PASSWORD"
+    echo "   (密码也在上方启动日志和本次启动的 x11vnc.out 里)"
+else
+    echo "🔐 VNC 密码: 见上方启动日志"
+fi
+echo ""
+echo "外网访问: ./scripts/start-ngrok.sh"
 echo "运行健康检查: ./health-check.sh"
