@@ -104,8 +104,6 @@ vnc-research/
 # 1. 装依赖
 sudo apt install -y x11vnc novnc websockify
 
-> **术语说明**:本项目文档里 **noVNC**(驼峰)是项目名(HTML5 VNC 客户端),**novnc**(全小写)是 Debian/Ubuntu 上的 apt 包名,两者指同一个工具。
-
 # 2. 启动虚拟显示 + VNC + 浏览器(脚本方式,见 docs/02-部署指南.md)
 cd /root/project/docs/vnc-research/scripts
 chmod +x *.sh
@@ -115,7 +113,9 @@ chmod +x *.sh
 # http://你的服务器IP:6080/vnc.html
 
 # 4. 让你的 AI agent 跑调研任务(加载 skills/SKILL.md)
-```text
+```
+
+> **术语说明**:本项目文档里 **noVNC**(驼峰)是项目名(HTML5 VNC 客户端),**novnc**(全小写)是 Debian/Ubuntu 上的 apt 包名,两者指同一个工具。
 
 **详细步骤**见 [docs/00-快速开始.md](docs/00-快速开始.md)
 
