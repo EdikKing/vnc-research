@@ -4,6 +4,8 @@
 
 **核心思路**: 不依赖付费云服务(零成本),不暴露公网(零安全风险),agent 和人类共享同一个 chromium 实例,登录态复用,数据本地落盘。
 
+> ⚠️ **v0.3.0 起**:Dockerfile 已迁移到独立仓库 [vnc-research-docker](git@git.edik.cn:edik-project/vnc-research-docker.git),本仓库不再维护镜像构建。请通过该仓库的 Docker 镜像部署。
+
 **核心协作原则**(🔴 最重要):
 - agent 默认自动操作任何网页任务(调研/抓取/操作/监控)
 - 遇到 **登录墙 / 滑块 / 验证码 / 扫码 / 支付** 等 agent 处理不了的情况 → **立即暂停**
