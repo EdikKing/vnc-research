@@ -64,7 +64,7 @@ vnc-research/
 2. chromium 启动时开 `--remote-debugging-port=9222`,AI 用 playwright 连过去
 3. 你的 VNC 浏览器和 AI agent 操作**同一个 chromium 实例**,登录态/cookie/标签页全共享
 4. 你**只在登录墙或滑块时介入**(在 VNC 端手动操作),agent 自动接管其他一切
-5. **完全内网**,不需要公网 IP,不需要 ngrok/cloudflared
+5. **默认内网**,不需要公网 IP;如需从公网访问,见 [docs/06-外网访问.md](docs/06-外网访问.md)(用 ngrok + VNC 密码 + basic-auth 双层鉴权)
 
 ---
 
@@ -146,6 +146,18 @@ chmod +x *.sh
 
 ---
 
+## 安全与鉴权(v0.2.0+)
+
+v0.2.0 起,vnc-research 默认开启鉴权:
+
+- **VNC 密码**:[`scripts/start-all.sh`](scripts/start-all.sh) 启动时**自动生成 8 位数字密码**,启动日志打印(找 🔐 VNC 密码 这一行);用户可用 `export VNC_PASSWORD=你的密码` 覆盖
+- **ngrok basic-auth**(仅外网访问需要):用户自设 `NGROK_USER` + `NGROK_PASS` env,启动 [scripts/start-ngrok.sh](scripts/start-ngrok.sh) 时启用双层鉴权
+- **双层鉴权架构**(外网):ngrok basic-auth 防扫描 + VNC 密码防 basic-auth 被突破
+
+详细配置、外网访问、Docker 鉴权见 [docs/06-外网访问.md](docs/06-外网访问.md)。
+
+⚠️ **不鉴权 = 灾难**:任何扫到 ngrok 链接的人都能操控你的浏览器 → 写评论 / 发消息 / 改密码 / 转账(用你的 cookie 登录的账号)。
+
 ## 风险与限制
 
 - **需要 Linux 服务器**(macOS/Windows 也行但本项目以 Linux 为主)
@@ -153,6 +165,7 @@ chmod +x *.sh
 - **一台服务器 = 一个人用**(多用户需要每人一组端口,或者改用 Kasm/Selenium Grid)
 - **agent 操作 chromium 时会触发同样的 IP 风控**(没有 stealth 优势,适合"已登录账号 + 国内平台"的场景)
 - **不解决 datacenter IP 拦截**(小红书 datacenter IP 还是会被拦,但你的 cookie 在就没问题)
+- **外网访问必须配鉴权**(v0.2.0+),ngrok 默认不配 basic-auth,VNC 密码虽然默认开启但只能防一层,详见 [docs/06-外网访问.md](docs/06-外网访问.md)
 
 ---
 
