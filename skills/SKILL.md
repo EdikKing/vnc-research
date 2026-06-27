@@ -809,9 +809,8 @@ Agent: [抓 3 个平台 + 合并排序]
 - 项目主页: `/root/project/docs/vnc-research/`(shareable 给朋友)
 - 部署指南: `/root/project/docs/vnc-research/docs/02-部署指南.md`
 - 踩坑记录: `/root/project/docs/vnc-research/docs/04-踩坑记录.md`
-- 健康检查: `/root/project/docs/vnc-research/scripts/health-check.sh`(已实测可跑通)
+- 健康检查: `docker logs vnc-research` 看容器日志(已实测可跑通)
 - 演示样例: `/root/project/docs/vnc-research/examples/xiaohongshu-search.md`
-- 演示脚本: `scripts/playwright-connect.py`(已实测可跑通)
 - **场景应用清单**: `/root/project/docs/vnc-research/examples/use-cases.md`(15 个场景,调研/抓取/操作/监控/聚合)
 - **🟢 中文平台经验沉淀**: `~/.hermes/skills/research/chinese-web-research/SKILL.md` + `references/vnc-playwright-cdp-setup.md` — 中文平台特定踩坑
 - **🔴 误读指令的反面案例**: 每轮任务开头的 "用户原话 → 我的解读 → 实际意图" 三段式记录 — 防止不澄清就开干
