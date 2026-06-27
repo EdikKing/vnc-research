@@ -43,7 +43,7 @@ unique = dedup_by_title_similarity(all_results, threshold=0.7)
 print(f"总 {len(all_results)} 条,去重后 {len(unique)} 条")
 for i, item in enumerate(unique[:30]):
     print(f"{i+1}. [{item['platform']}] {item['title']}")
-```
+```python
 
 **适用**: 竞品调研、舆情监控、学术资料收集、品牌传播追踪。
 
@@ -107,7 +107,7 @@ import os, json
 os.makedirs(f"/root/project/docs/{author}/", exist_ok=True)
 with open(f"/root/project/docs/{author}/{date}_{title}.json", "w") as f:
     json.dump(content, f, ensure_ascii=False, indent=2)
-```
+```python
 
 **适用**: 个人知识库建立、博主追踪、媒体监测。
 
@@ -174,7 +174,7 @@ for tc in test_cases:
     print(f"{tc['name']}: {'✓ 通过' if (success or error_msg) else '✗ 失败'}")
     if error_msg:
         print(f"  错误提示: {error_msg}")
-```
+```text
 
 **适用**: E2E 测试、回归测试、自动化 QA。
 
@@ -244,7 +244,7 @@ for user in following_a:
     if btn.is_visible():
         btn.click()
     page.wait_for_timeout(1000)
-```
+```python
 
 ---
 
@@ -302,7 +302,7 @@ while True:
             seen_titles.update(new_titles)
     
     time.sleep(1800)  # 30 分钟一次
-```
+```python
 
 ---
 
@@ -375,7 +375,7 @@ for call in api_calls:
     r = requests.get(call['url'], headers=call['headers'])
     data = r.json()
     # 处理 data...
-```
+```python
 
 **适用**: 反向工程 SPA、绕过 UI 限制、批量操作。
 
@@ -415,7 +415,7 @@ for email in emails:
 
 需要不同端口(本项目当前不支持,**多用户扩展见 `docs/05-安全考量.md`**):
 
-```
+```text
 # 个人 profile
 chromium --user-data-dir=/home/edik/.config/chromium --remote-debugging-port=9222
 # 公司 profile  
@@ -450,7 +450,7 @@ input("完成后按 Enter...")
 page.wait_for_timeout(2000)
 if "订单创建成功" in page.content():
     print("✓ 订单创建成功")
-```
+```text
 
 **关键原则**: **任何涉及资金/隐私的操作,必须操作员在 VNC 手动确认**,不要自动化支付密码。
 

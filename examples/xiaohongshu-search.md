@@ -22,7 +22,7 @@
 ```python
 # Hermes agent:
 skill_view("vnc-research")
-```
+```python
 
 ### Step 2:连 CDP,准备 page
 
@@ -44,7 +44,7 @@ page.goto(
     wait_until="domcontentloaded"
 )
 page.wait_for_timeout(3000)
-```
+```python
 
 ### Step 4:检查登录态
 
@@ -75,7 +75,7 @@ items = page.evaluate("""
     }
 """)
 # Found 20 unique URLs
-```
+```python
 
 **关键踩坑**: 必须用 `a[href*="search_result/"]` 抓链接(带 xsec_token),用 `/explore/` 链接会 404。
 
@@ -117,7 +117,7 @@ def parse_int(s):
 results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 
 # 输出 Markdown 报告(给操作员看)
-```
+```python
 
 ---
 
@@ -158,7 +158,7 @@ results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 
 ```
 /tmp/xhs_AI编程_2026-06-26.json  (20 条完整数据,字段: title/author/date/likes/collects/comments/desc/href)
-```
+```bash
 
 ---
 

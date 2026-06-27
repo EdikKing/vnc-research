@@ -8,7 +8,7 @@
 - agent 默认自动操作任何网页任务(调研/抓取/操作/监控)
 - 遇到 **登录墙 / 滑块 / 验证码 / 扫码 / 支付** 等 agent 处理不了的情况 → **立即暂停**
 - 暂停时输出**带 VNC 链接** 的标准通知:
-  ```
+```text
   🛑 暂停: 需要操作员介入
   任务: 登录小红书
   原因: 搜索页显示 '登录后查看'
@@ -18,6 +18,8 @@
 - 操作员在 VNC 操作完说 "搞定了" → agent reload + 继续
 
 完整协议见 `skills/SKILL.md` 的 **"🔴 操作员介入协议"** 章节。
+
+完整使用指南和场景化协作流程见 [docs/03-使用指南.md](docs/03-使用指南.md)。
 
 ---
 
@@ -34,7 +36,7 @@
 
 ## 目录结构
 
-```
+```python
 vnc-research/
 ├── README.md                # 你正在看
 ├── LICENSE                  # MIT 协议
@@ -47,7 +49,7 @@ vnc-research/
 
 ## 30 秒看懂架构
 
-```
+```python
 [你的浏览器] → http://你的服务器IP:6080/vnc.html
                     ↓ WebSocket
               [服务器 noVNC :6080] ──→ [x11vnc :5900] ──→ [Xvfb :99 虚拟显示]
@@ -68,7 +70,7 @@ vnc-research/
 
 ## 这个项目里有什么
 
-```
+```python
 vnc-research/
 ├── README.md          ← 你现在看的
 ├── docs/
@@ -102,6 +104,8 @@ vnc-research/
 # 1. 装依赖
 sudo apt install -y x11vnc novnc websockify
 
+> **术语说明**:本项目文档里 **noVNC**(驼峰)是项目名(HTML5 VNC 客户端),**novnc**(全小写)是 Debian/Ubuntu 上的 apt 包名,两者指同一个工具。
+
 # 2. 启动虚拟显示 + VNC + 浏览器(脚本方式,见 docs/02-部署指南.md)
 cd /root/project/docs/vnc-research/scripts
 chmod +x *.sh
@@ -111,7 +115,7 @@ chmod +x *.sh
 # http://你的服务器IP:6080/vnc.html
 
 # 4. 让你的 AI agent 跑调研任务(加载 skills/SKILL.md)
-```
+```text
 
 **详细步骤**见 [docs/00-快速开始.md](docs/00-快速开始.md)
 
