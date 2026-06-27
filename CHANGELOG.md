@@ -28,5 +28,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - 已知限制:不适合 macOS / Windows(以 Linux 为主);一台服务器 = 一个人用
 - 不解决 datacenter IP 拦截问题
 
-[Unreleased]: https://git.edik.cn/edik-project/vnc-research/compare/v0.1.0...HEAD
-[0.1.0]: https://git.edik.cn/edik-project/vnc-research/-/tags/v0.1.0
+[Unreleased]: https://github.com/EdikKing/vnc-research/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/EdikKing/vnc-research/releases/tag/v0.1.0

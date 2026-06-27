@@ -158,7 +158,7 @@ chmod +x *.sh
 
 ## 快速使用
 
-1. **克隆仓库**:`git clone git@git.edik.cn:edik-project/vnc-research.git && cd vnc-research`
+1. **克隆仓库**:`git clone git@github.com:EdikKing/vnc-research.git && cd vnc-research`
 2. **看 5 分钟快速开始**:[docs/00-快速开始.md](docs/00-快速开始.md)
 3. **部署到服务器**:[docs/02-部署指南.md](docs/02-部署指南.md)
 4. **遇到坑了**?[docs/04-踩坑记录.md](docs/04-踩坑记录.md)
