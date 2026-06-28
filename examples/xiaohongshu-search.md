@@ -129,14 +129,14 @@ results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 
 | # | 标题 | 作者 | 赞/藏/评 | 链接 |
 |---|------|------|---------|------|
-| 1 | 这份 Vibe Coding 指南,把 AI 编程讲透了 | @Feiskyer | 87 / 9232 / 61 | [link](https://...) |
-| 2 | Vibe Coding 技巧:SSD(Spec-Driven Development) | @喵叽叽 | 50 / 52 / 评论 | [link](https://...) |
-| 3 | 桌面小螃蟹 Clawd 进化!解锁 Coding 模式 | @鹿鹿🦌 | 42 / 1419 / 229 | [link](https://...) |
-| 4 | 为了不让 AI 瞎写代码,大神把自己蒸馏了(GitHub 6 万星) | @量子位 | 37 / 2.3万 / 111 | [link](https://...) |
-| 5 | Ghostty + Claude Code AI 编程最强终端✨ | @提然聊AI | 31 / 834 / 103 | [link](https://...) |
+| 1 | 这份 Vibe Coding 指南,把 AI 编程讲透了 | @Feiskyer | 87 / 9232 / 61 | — |
+| 2 | Vibe Coding 技巧:SSD(Spec-Driven Development) | @喵叽叽 | 50 / 52 / 评论 | — |
+| 3 | 桌面小螃蟹 Clawd 进化!解锁 Coding 模式 | @鹿鹿🦌 | 42 / 1419 / 229 | — |
+| 4 | 为了不让 AI 瞎写代码,大神把自己蒸馏了(GitHub 6 万星) | @量子位 | 37 / 2.3万 / 111 | — |
+| 5 | Ghostty + Claude Code AI 编程最强终端✨ | @提然聊AI | 31 / 834 / 103 | — |
 | ... | | | | |
 
-(完整 15 条见 `/tmp/xhs_AI编程_2026-06-26.json`)
+(完整 15 条见 `examples/xhs_AI编程_2026-06-26.json`)
 
 ---
 
@@ -156,11 +156,9 @@ results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 
 ## 数据落盘
 
-```
-/tmp/xhs_AI编程_2026-06-26.json  (20 条完整数据,字段: title/author/date/likes/collects/comments/desc/href)
 ```bash
-
----
+/tmp/xhs_AI编程_2026-06-26.json  (20 条完整数据,字段: title/author/date/likes/collects/comments/desc/href)
+```
 
 ## 性能数据
 
