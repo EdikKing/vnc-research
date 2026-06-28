@@ -19,7 +19,7 @@ docker run -d --name vnc-research \
 
 浏览器打开 http://localhost:6080/vnc.html,看到 VNC 桌面 = 成功。
 
-
+> 详细参数(自定义分辨率 / 持久化数据等)见 [docs/02-部署指南.md](docs/02-部署指南.md)。
 
 ---
 
@@ -79,6 +79,7 @@ docker run -d --name vnc-research \
 
 ## 详细文档
 
+- [docs/02-部署指南.md](docs/02-部署指南.md) · Docker 部署 + 自定义参数
 - [docs/06-外网访问.md](docs/06-外网访问.md) · ngrok 外网访问 + 鉴权与安全
 - [docs/03-使用指南.md](docs/03-使用指南.md) · 怎么用(操作员协议)
 - [skills/SKILL.md](skills/SKILL.md) · AI agent 用的协议
@@ -151,7 +152,7 @@ vnc-research/
 
 ## 快速使用
 
-1. **部署**:`docker run -d --name vnc-research -p 6080:6080 -p 9222:9222 edik/vnc-research`
+1. **部署**:`docker run -d --name vnc-research -p 6080:6080 -p 9222:9222 edik/vnc-research`(详见 [docs/02-部署指南.md](docs/02-部署指南.md))
 2. **浏览器打开 VNC**:http://你的服务器IP:6080/vnc.html
 3. **让 AI agent 跑调研任务**:加载 [skills/SKILL.md](skills/SKILL.md)
 4. **更多场景**:[examples/use-cases.md](examples/use-cases.md)(15 个实战场景:调研/抓取/操作/监控/聚合)
