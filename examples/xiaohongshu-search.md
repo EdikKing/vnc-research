@@ -190,6 +190,6 @@ results.sort(key=lambda x: parse_int(x.get('likes', '')), reverse=True)
 1. 复制本示例的代码骨架
 2. 改 `search_url` 和 `evaluate` 里的选择器
 3. 适配其他平台时,参考 `skills/SKILL.md` 的"平台特定"章节
-4. 平台特定踩坑见 `docs/04-踩坑记录.md`
+4. 更多场景:`examples/use-cases.md`(15 个实战场景:调研/抓取/操作/监控/聚合)
 
 **0 操作员介入 / 0 credit / 完全内网** — 这就是 vnc-research 的价值。

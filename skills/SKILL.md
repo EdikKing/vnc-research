@@ -761,7 +761,7 @@ Agent: [抓 3 个平台 + 合并排序]
 
 ## 关键踩坑(必读)
 
-完整见 `/root/project/docs/vnc-research/docs/04-踩坑记录.md`。
+完整见 `/root/project/docs/vnc-research/skills/SKILL.md` 的"实战案例"和"参考资源"章节,以及 `examples/use-cases.md`(15 个实战场景)。
 
 最重要的几个:
 
@@ -808,7 +808,6 @@ Agent: [抓 3 个平台 + 合并排序]
 - `references/login-state-detection.md` — **登录墙精确检测方法**(避免"登录"裸字误报)+ 常见平台信号词清单。涉及登录判断时第一件事打开。
 - 项目主页: `/root/project/docs/vnc-research/`(shareable 给朋友)
 - 部署指南: `/root/project/docs/vnc-research/docs/02-部署指南.md`
-- 踩坑记录: `/root/project/docs/vnc-research/docs/04-踩坑记录.md`
 - 健康检查: `docker logs vnc-research` 看容器日志(已实测可跑通)
 - 演示样例: `/root/project/docs/vnc-research/examples/xiaohongshu-search.md`
 - **场景应用清单**: `/root/project/docs/vnc-research/examples/use-cases.md`(15 个场景,调研/抓取/操作/监控/聚合)

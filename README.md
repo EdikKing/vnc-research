@@ -83,7 +83,6 @@ docker run -d --name vnc-research \
 - [docs/02-部署指南.md](docs/02-部署指南.md) · Docker 部署 + 自定义参数
 - [docs/06-外网访问.md](docs/06-外网访问.md) · 用 ngrok 暴露到公网
 - [docs/03-使用指南.md](docs/03-使用指南.md) · 怎么用(操作员协议)
-- [docs/04-踩坑记录.md](docs/04-踩坑记录.md) · 常见问题
 - [docs/05-安全考量.md](docs/05-安全考量.md) · 鉴权与安全
 - [docs/01-架构详解.md](docs/01-架构详解.md) · 组件详解 + 数据流
 - [skills/SKILL.md](skills/SKILL.md) · AI agent 用的协议
@@ -97,7 +96,7 @@ vnc-research/
 ├── README.md           # 你正在看
 ├── LICENSE             # MIT
 ├── CHANGELOG.md        # 版本历史
-├── docs/               # 7 篇教程文档
+├── docs/               # 6 篇教程文档
 ├── examples/           # 实战案例(小红书搜索 / use-cases)
 ├── skills/SKILL.md     # AI agent 协议(操作员介入)
 └── assets/             # 截图
@@ -159,8 +158,7 @@ vnc-research/
 1. **部署**:`docker run -d --name vnc-research -p 6080:6080 -p 9222:9222 edik/vnc-research`(详见 [docs/02-部署指南.md](docs/02-部署指南.md))
 2. **浏览器打开 VNC**:http://你的服务器IP:6080/vnc.html
 3. **让 AI agent 跑调研任务**:加载 [skills/SKILL.md](skills/SKILL.md)
-4. **遇到坑了**?看 [docs/04-踩坑记录.md](docs/04-踩坑记录.md)
-5. **更多场景**:[examples/use-cases.md](examples/use-cases.md)
+4. **更多场景**:[examples/use-cases.md](examples/use-cases.md)(15 个实战场景:调研/抓取/操作/监控/聚合)
 
 有问题提 issue。
 
