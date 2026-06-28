@@ -81,9 +81,8 @@ docker run -d --name vnc-research \
 
 - [docs/00-快速开始.md](docs/00-快速开始.md) · 5 分钟跑起来
 - [docs/02-部署指南.md](docs/02-部署指南.md) · Docker 部署 + 自定义参数
-- [docs/06-外网访问.md](docs/06-外网访问.md) · 用 ngrok 暴露到公网
+- [docs/06-外网访问.md](docs/06-外网访问.md) · ngrok 外网访问 + 鉴权与安全
 - [docs/03-使用指南.md](docs/03-使用指南.md) · 怎么用(操作员协议)
-- [docs/05-安全考量.md](docs/05-安全考量.md) · 鉴权与安全
 - [docs/01-架构详解.md](docs/01-架构详解.md) · 组件详解 + 数据流
 - [skills/SKILL.md](skills/SKILL.md) · AI agent 用的协议
 
@@ -140,7 +139,7 @@ vnc-research/
 
 ⚠️ **不鉴权 = 灾难**:任何扫到 ngrok 链接的人都能操控你的浏览器 → 用你的 cookie 登录的账号写评论 / 发消息 / 改密码 / 转账。
 
-详细安全分析见 [docs/05-安全考量.md](docs/05-安全考量.md)。
+详细鉴权与安全配置见 [docs/06-外网访问.md](docs/06-外网访问.md)。
 
 ---
 
