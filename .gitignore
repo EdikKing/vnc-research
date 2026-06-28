@@ -17,9 +17,3 @@ __pycache__/
 *.pyc
 .venv/
 venv/
-
-# Local assets(截图 / HTML 演示,不进 git)
-# 仓库根的 assets/ 目录用于本地临时文件,不版本控制
-# 真要放仓库级资产,放到 docs/assets/ 之类专门路径并显式 git add
-assets/*
-!assets/.gitkeep
