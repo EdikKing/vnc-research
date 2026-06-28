@@ -2,7 +2,7 @@
 
 > **核心思路**:不依赖付费云服务(零成本),不暴露公网(零安全风险),agent 和人类共享同一个 chromium 实例,登录态复用。
 
-**标准部署**:Docker Hub 官方镜像 [`edik/vnc-research`](https://hub.docker.com/r/edik/vnc-research)(镜像构建在独立仓库 [vnc-research-docker](git@git.edik.cn:edik-project/vnc-research-docker.git) 维护)。
+**标准部署**:Docker Hub 官方镜像 [`edik/vnc-research`](https://hub.docker.com/r/edik/vnc-research) — **当前 latest = 1.0 GA**(稳定版,生产可用)。镜像构建在独立仓库 [vnc-research-docker](git@git.edik.cn:edik-project/vnc-research-docker.git) 维护。
 
 **用 VNC 把一台 Linux 服务器变成共享浏览器,让 AI Agent 接管所有网页调研,人类只在登录/验证码时介入。**
 
