@@ -5,7 +5,7 @@ description: >
   浏览器交互的任务 — 调研抓取 / 内容获取 / 自动化操作 / 监控 / 跨平台
   聚合。操作员仅在登录墙 / 验证码时介入。比 BrowserAct 更优: 永久免费、
   登录态持久、完全内网、可处理任意网页场景。
-version: 0.3.0.2
+version: 0.3.1
 author: vnc-research contributors
 license: MIT
 platforms:
