@@ -5,6 +5,12 @@ description: >
   浏览器交互的任务 — 调研抓取 / 内容获取 / 自动化操作 / 监控 / 跨平台
   聚合。操作员仅在登录墙 / 验证码时介入。比 BrowserAct 更优: 永久免费、
   登录态持久、完全内网、可处理任意网页场景。
+version: 0.3.0.2
+author: vnc-research contributors
+license: MIT
+platforms:
+  - linux
+updated: 2026-06-28
 ---
 
 # VNC + Playwright CDP · 通用网页交互 Skill
@@ -176,6 +182,9 @@ Agent 继续执行原任务
 - 卡在什么步骤
 - 操作员做了什么操作
 - 后续 agent 怎么继续
+
+> **路径说明**:`/tmp/` 是 Linux 标准临时目录,容器内也可用。系统重启会清空,
+> 长期数据请用 `./output/` 或挂载 volume(见 [docs/01-部署指南.md](../docs/01-部署指南.md) 的"数据持久化"章节)。
 
 写到 `/tmp/vnc-research-interventions.log`:
 ```
@@ -761,7 +770,7 @@ Agent: [抓 3 个平台 + 合并排序]
 
 ## 关键踩坑(必读)
 
-完整见 `/root/project/docs/vnc-research/skills/SKILL.md` 的"实战案例"和"参考资源"章节,以及 `examples/use-cases.md`(15 个实战场景)。
+完整见 `examples/use-cases.md`(15 个实战场景,调研/抓取/操作/监控/聚合)。
 
 最重要的几个:
 
@@ -801,19 +810,6 @@ Agent: [抓 3 个平台 + 合并排序]
 ```
 
 ---
-
-## Reference Files
-
-- `references/verified-scenarios-2026-06-26.md` — **实测验证清单**:什么跑通了/什么没跑通/性能数据/服务 PID 状态。**未来 session 加载本 skill 后第一件事**:打开这个文件确认服务状态。
-- `references/login-state-detection.md` — **登录墙精确检测方法**(避免"登录"裸字误报)+ 常见平台信号词清单。涉及登录判断时第一件事打开。
-- 项目主页: `/root/project/docs/vnc-research/`(shareable 给朋友)
-- 部署指南: `/root/project/docs/vnc-research/docs/01-部署指南.md`
-- 健康检查: `docker logs vnc-research` 看容器日志(已实测可跑通)
-- 演示样例: `/root/project/docs/vnc-research/examples/xiaohongshu-search.md`
-- **场景应用清单**: `/root/project/docs/vnc-research/examples/use-cases.md`(15 个场景,调研/抓取/操作/监控/聚合)
-- **🟢 中文平台经验沉淀**: `~/.hermes/skills/research/chinese-web-research/SKILL.md` + `references/vnc-playwright-cdp-setup.md` — 中文平台特定踩坑
-- **🔴 误读指令的反面案例**: 每轮任务开头的 "用户原话 → 我的解读 → 实际意图" 三段式记录 — 防止不澄清就开干
-
 ---
 
 ## 操作边界(2026-06-26 划定)
