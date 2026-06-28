@@ -19,7 +19,7 @@ docker run -d --name vnc-research \
 
 浏览器打开 http://localhost:6080/vnc.html,看到 VNC 桌面 = 成功。
 
-> 详细参数(自定义分辨率 / 持久化数据等)见 [docs/02-部署指南.md](docs/02-部署指南.md)。
+> 详细参数(自定义分辨率 / 持久化数据等)见 [docs/01-部署指南.md](docs/01-部署指南.md)。
 
 ---
 
@@ -41,7 +41,7 @@ docker run -d --name vnc-research \
 
 完整协议见 [skills/SKILL.md](skills/SKILL.md) 的 **"🔴 操作员介入协议"** 章节。
 
-完整使用指南和场景化协作流程见 [docs/03-使用指南.md](docs/03-使用指南.md)。
+完整使用指南和场景化协作流程见 [docs/02-使用指南.md](docs/02-使用指南.md)。
 
 ---
 
@@ -62,7 +62,7 @@ docker run -d --name vnc-research \
 2. chromium 启动时开 `--remote-debugging-port=9222`,AI 用 playwright 连过去
 3. 你的 VNC 浏览器和 AI agent 操作**同一个 chromium 实例**,登录态/cookie/标签页全共享
 4. 你**只在登录墙或滑块时介入**(在 VNC 端手动操作),agent 自动接管其他一切
-5. **默认内网**,不需要公网 IP;如需从公网访问,见 [docs/06-外网访问.md](docs/06-外网访问.md)(ngrok 隧道 + 双层鉴权)
+5. **默认内网**,不需要公网 IP;如需从公网访问,见 [docs/03-外网访问.md](docs/03-外网访问.md)(ngrok 隧道 + 双层鉴权)
 
 ---
 
@@ -79,9 +79,9 @@ docker run -d --name vnc-research \
 
 ## 详细文档
 
-- [docs/02-部署指南.md](docs/02-部署指南.md) · Docker 部署 + 自定义参数
-- [docs/06-外网访问.md](docs/06-外网访问.md) · ngrok 外网访问 + 鉴权与安全
-- [docs/03-使用指南.md](docs/03-使用指南.md) · 怎么用(操作员协议)
+- [docs/01-部署指南.md](docs/01-部署指南.md) · Docker 部署 + 自定义参数
+- [docs/03-外网访问.md](docs/03-外网访问.md) · ngrok 外网访问 + 鉴权与安全
+- [docs/02-使用指南.md](docs/02-使用指南.md) · 怎么用(操作员协议)
 - [skills/SKILL.md](skills/SKILL.md) · AI agent 用的协议
 
 ---
@@ -92,7 +92,7 @@ docker run -d --name vnc-research \
 vnc-research/
 ├── README.md           # 你正在看
 ├── LICENSE             # MIT
-├── docs/               # 3 篇教程文档(02 部署 / 03 使用 / 06 外网访问)
+├── docs/               # 3 篇教程文档(01 部署 / 02 使用 / 03 外网访问)
 ├── examples/           # 实战案例(小红书搜索 / use-cases)
 └── skills/SKILL.md     # AI agent 协议(操作员介入)
 ```
@@ -130,12 +130,12 @@ vnc-research/
 ## 安全与鉴权
 
 默认 Docker 镜像:
-- **ngrok basic-auth**(外网访问时用,见 [06-外网访问](docs/06-外网访问.md))
+- **ngrok basic-auth**(外网访问时用,见 [03-外网访问](docs/03-外网访问.md))
 - **单层鉴权**:ngrok basic-auth 防扫描(基础防护足够)
 
 ⚠️ **不鉴权 = 严重风险**:任何扫到 ngrok 链接的人都能操控你的浏览器 → 用你的 cookie 登录的账号写评论 / 发消息 / 改密码。
 
-详细鉴权与安全配置见 [docs/06-外网访问.md](docs/06-外网访问.md)。
+详细鉴权与安全配置见 [docs/03-外网访问.md](docs/03-外网访问.md)。
 
 ---
 
@@ -150,7 +150,7 @@ vnc-research/
 
 ## 快速使用
 
-1. **部署**:`docker run -d --name vnc-research -p 6080:6080 -p 9222:9222 edik/vnc-research`(详见 [docs/02-部署指南.md](docs/02-部署指南.md))
+1. **部署**:`docker run -d --name vnc-research -p 6080:6080 -p 9222:9222 edik/vnc-research`(详见 [docs/01-部署指南.md](docs/01-部署指南.md))
 2. **浏览器打开 VNC**:http://你的服务器IP:6080/vnc.html
 3. **让 AI agent 跑调研任务**:加载 [skills/SKILL.md](skills/SKILL.md)
 4. **更多场景**:[examples/use-cases.md](examples/use-cases.md)(15 个实战场景:调研/抓取/操作/监控/聚合)

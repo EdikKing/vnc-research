@@ -320,7 +320,7 @@ if "verify" in content.lower() or "rmc.bytedance.com" in content:
 
 ### Step 5:输出报告
 
-按 `docs/03-使用指南.md` 的报告模板,数据落 `/tmp/`,Markdown 输出给操作员。
+按 `docs/02-使用指南.md` 的报告模板,数据落 `/tmp/`,Markdown 输出给操作员。
 
 ---
 
@@ -755,7 +755,7 @@ Agent: [抓 3 个平台 + 合并排序]
 /root/project/docs/<project>/<date>_<topic>.md
 ```
 
-格式见 `docs/03-使用指南.md`。
+格式见 `docs/02-使用指南.md`。
 
 ---
 
@@ -807,7 +807,7 @@ Agent: [抓 3 个平台 + 合并排序]
 - `references/verified-scenarios-2026-06-26.md` — **实测验证清单**:什么跑通了/什么没跑通/性能数据/服务 PID 状态。**未来 session 加载本 skill 后第一件事**:打开这个文件确认服务状态。
 - `references/login-state-detection.md` — **登录墙精确检测方法**(避免"登录"裸字误报)+ 常见平台信号词清单。涉及登录判断时第一件事打开。
 - 项目主页: `/root/project/docs/vnc-research/`(shareable 给朋友)
-- 部署指南: `/root/project/docs/vnc-research/docs/02-部署指南.md`
+- 部署指南: `/root/project/docs/vnc-research/docs/01-部署指南.md`
 - 健康检查: `docker logs vnc-research` 看容器日志(已实测可跑通)
 - 演示样例: `/root/project/docs/vnc-research/examples/xiaohongshu-search.md`
 - **场景应用清单**: `/root/project/docs/vnc-research/examples/use-cases.md`(15 个场景,调研/抓取/操作/监控/聚合)
