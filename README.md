@@ -19,7 +19,7 @@ docker run -d --name vnc-research \
 
 浏览器打开 http://localhost:6080/vnc.html,看到 VNC 桌面 = 成功。
 
-> 详细参数(自定义分辨率 / VNC 密码 / 持久化数据等)见 [docs/02-部署指南.md](docs/02-部署指南.md)。
+> 详细参数(自定义分辨率 / 持久化数据等)见 [docs/02-部署指南.md](docs/02-部署指南.md)。
 
 ---
 
@@ -136,9 +136,8 @@ vnc-research/
 ## 安全与鉴权
 
 默认 Docker 镜像:
-- **VNC 密码**(可选,通过 `-e VNC_PASSWORD=*** 启动参数设置)
 - **ngrok basic-auth**(外网访问时用,见 [06-外网访问](docs/06-外网访问.md))
-- **双层鉴权**:ngrok basic-auth 防扫描 + VNC 密码防 basic-auth 被突破
+- **单层鉴权**:ngrok basic-auth 防扫描(基础防护足够)
 
 ⚠️ **不鉴权 = 灾难**:任何扫到 ngrok 链接的人都能操控你的浏览器 → 用你的 cookie 登录的账号写评论 / 发消息 / 改密码 / 转账。
 
