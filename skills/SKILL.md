@@ -131,7 +131,7 @@ def get_vnc_url():
     import os
     server_ip = os.environ.get("VNC_SERVER_IP", "你的服务器IP")
     return f"http://{server_ip}:6080/vnc.html"
-```python
+```
 
 ### 标准流程
 
@@ -149,7 +149,7 @@ Agent 输出标准暂停通知(含 VNC URL)
 Agent: page.reload() + page.wait_for_timeout(2000)
   ↓
 Agent 继续执行原任务
-```text
+```
 
 ### 重要原则(必读)
 
@@ -181,7 +181,7 @@ Agent 继续执行原任务
 ```
 2026-06-26 23:50 | xiaohongshu | 登录墙 | 操作员扫码登录 | agent page.reload + 继续
 2026-06-26 23:55 | douyin | 滑块 | 操作员滑过 | agent page.reload + 继续
-```text
+```
 
 ---
 
@@ -312,7 +312,7 @@ if "verify" in content.lower() or "rmc.bytedance.com" in content:
     input("按 Enter 继续...")
     page.reload()
     page.wait_for_timeout(3000)
-```text
+```
 
 ### Step 4:抓数据(平台特定)
 
@@ -331,7 +331,7 @@ if "verify" in content.lower() or "rmc.bytedance.com" in content:
 **搜索 URL**:
 ```
 https://www.xiaohongshu.com/search_result?keyword=<urlencoded>&source=web_explore_feed
-```text
+```
 
 **搜索结果抓取**(返回笔记索引):
 ```javascript
@@ -360,14 +360,14 @@ https://www.xiaohongshu.com/search_result?keyword=<urlencoded>&source=web_explor
     d.comments = (document.querySelector('.chat-wrapper .count')?.innerText || '').trim();
     return d;
 }
-```text
+```
 
 ### 抖音(douyin.com)
 
 **搜索 URL**:
 ```
 https://www.douyin.com/search/<urlencoded>
-```python
+```
 
 **登录墙**:
 - 抖音搜索页强制登录
@@ -406,14 +406,14 @@ https://www.zhihu.com/search?type=content&q=<urlencoded>
     upvotes: el.querySelector('.VoteButton--up, [aria-label*="赞同"]')?.innerText?.trim() || '',
     href: el.querySelector('a')?.href || ''
 }))
-```text
+```
 
 ### B站(bilibili.com)
 
 **搜索 URL**:
 ```
 https://search.bilibili.com/all?keyword=<urlencoded>&order=click
-```text
+```
 
 **直接通**(不需要登录)。
 
@@ -452,7 +452,7 @@ page.locator(".content-editor").type("要发的内容")
 # 按键盘
 page.keyboard.press("Enter")
 page.keyboard.press("Control+Enter")  # Ctrl+Enter 提交
-```python
+```
 
 ### 模板 2:登录态复用 + 自动操作
 
@@ -493,7 +493,7 @@ for _ in range(20):  # 最多滚 20 次
     if items == last_count:
         break
     last_count = items
-```python
+```
 
 ### 模板 4:下载文件
 
@@ -520,7 +520,7 @@ with open("/tmp/file.pdf", "wb") as f:
 page.set_input_files("input[type='file']", "/local/path/to/file.pdf")
 
 # 拖拽上传(更复杂,需要坐标 + mouse events)
-```python
+```
 
 ### 模板 6:填表
 
@@ -549,7 +549,7 @@ browser.contexts[0].add_cookies([{
     "domain": ".example.com",
     "path": "/"
 }])
-```python
+```
 
 ### 模板 8:处理弹窗 / 通知 / 下载请求
 
@@ -592,7 +592,7 @@ for i in range(steps):
     page.mouse.move(x, y, steps=2)
     page.wait_for_timeout(20)
 page.mouse.up()
-```python
+```
 
 ### 模板 10:网络拦截(看 API 请求)
 
@@ -627,7 +627,7 @@ import subprocess
 result = subprocess.run(["tesseract", "/tmp/screenshot.png", "-", "-l", "chi_sim+eng"],
                         capture_output=True, text=True)
 print(result.stdout)
-```python
+```
 
 ### 模板 12:跨页面持久化(多轮任务)
 
@@ -734,8 +734,8 @@ User: 收尾
 
 ### 模式 3:跨平台
 
-```text
 User: 调研 AI 编程(小红书 + 抖音 + B站)
+```
 Agent: [抓 3 个平台 + 合并排序]
 ```
 
@@ -798,7 +798,7 @@ Agent: [抓 3 个平台 + 合并排序]
 ## 局限性
 
 - (任何不能确认的数据)
-```python
+```
 
 ---
 
