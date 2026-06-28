@@ -92,11 +92,9 @@ docker run -d --name vnc-research \
 vnc-research/
 ├── README.md           # 你正在看
 ├── LICENSE             # MIT
-├── CHANGELOG.md        # 版本历史
-├── docs/               # 2 篇教程文档(03 使用 / 06 外网访问)
+├── docs/               # 3 篇教程文档(02 部署 / 03 使用 / 06 外网访问)
 ├── examples/           # 实战案例(小红书搜索 / use-cases)
-├── skills/SKILL.md     # AI agent 协议(操作员介入)
-└── assets/             # 截图
+└── skills/SKILL.md     # AI agent 协议(操作员介入)
 ```
 
 > ⚠️ v0.3.0 起:Dockerfile + scripts/ 已迁出到独立仓库 [vnc-research-docker](git@git.edik.cn:edik-project/vnc-research-docker.git),本仓库**纯文档化**。
@@ -135,7 +133,7 @@ vnc-research/
 - **ngrok basic-auth**(外网访问时用,见 [06-外网访问](docs/06-外网访问.md))
 - **单层鉴权**:ngrok basic-auth 防扫描(基础防护足够)
 
-⚠️ **不鉴权 = 灾难**:任何扫到 ngrok 链接的人都能操控你的浏览器 → 用你的 cookie 登录的账号写评论 / 发消息 / 改密码 / 转账。
+⚠️ **不鉴权 = 严重风险**:任何扫到 ngrok 链接的人都能操控你的浏览器 → 用你的 cookie 登录的账号写评论 / 发消息 / 改密码。
 
 详细鉴权与安全配置见 [docs/06-外网访问.md](docs/06-外网访问.md)。
 
