@@ -761,7 +761,7 @@ Agent: [抓 3 个平台 + 合并排序]
 ### 正式报告
 
 ```text
-/root/project/docs/<project>/<date>_<topic>.md
+~/projects/<project>/<date>_<topic>.md
 ```
 
 格式见 `docs/02-使用指南.md`。

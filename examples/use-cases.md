@@ -104,8 +104,9 @@ author_url = f"https://mp.weixin.qq.com/profile?__biz={biz}"
 
 # Step 3:保存到本地
 import os, json
-os.makedirs(f"/root/project/docs/{author}/", exist_ok=True)
-with open(f"/root/project/docs/{author}/{date}_{title}.json", "w") as f:
+output_dir = os.path.expanduser(f"~/projects/{author}/")
+os.makedirs(output_dir, exist_ok=True)
+with open(os.path.join(output_dir, f"{date}_{title}.json"), "w") as f:
     json.dump(content, f, ensure_ascii=False, indent=2)
 ```python
 
